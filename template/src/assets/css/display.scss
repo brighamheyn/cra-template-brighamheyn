@@ -1,0 +1,413 @@
+
+$zindex: 1;
+@while $zindex <= 20 {
+  .z-#{$zindex} {
+    z-index: #{$zindex} !important;
+  }
+  
+  .z-n#{$zindex} {
+    z-index: -#{$zindex} !important;
+  }
+
+  $zindex: $zindex + 1;
+}
+
+.block {
+    display: block !important;
+}
+
+.inline-block {
+    display: inline-block !important;
+}
+
+.inline {
+    display: inline !important;
+}
+
+.flow-root {
+    display: flow-root;
+}
+
+/* Box Sizing */
+
+.bs-content {
+    box-sizing: content-box !important;
+}
+
+.bs-border {
+    box-sizing: border-box !important;
+}
+
+.bs-in {
+    box-sizing: inherit !important;
+}
+
+.bs-ini {
+    box-sizing: initial !important;
+}
+
+.bs-un {
+    box-shadow: unset !important;
+}
+
+/* Flex */
+
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row !important;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column !important;
+}
+
+.align-center {
+  justify-items: center !important;
+  align-items: center !important;
+}
+
+.align-right {
+  justify-items: right !important;
+  align-items: right !important;
+}
+
+.align-left {
+  justify-items: left !important;
+  align-items: left !important;
+}
+
+.align-baseline {
+  align-items: baseline !important;
+  justify-items: baseline !important;
+}
+
+.justify-baseline {
+  align-content: baseline !important;
+  justify-content: baseline !important;
+}
+
+.justify-center {
+  justify-content: center !important;
+  align-content: center !important;
+}
+
+.justify-right {
+  justify-content: right !important;
+  align-content: right !important;
+}
+
+.justify-left {
+  justify-content: left !important;
+  align-content: left !important;
+}
+
+.space-between {
+  justify-content: space-between !important;
+  align-content: space-between !important;
+}
+
+.space-evenly {
+  justify-content: space-evenly !important;
+  align-content: space-evenly !important;
+}
+
+.space-around {
+  justify-content: space-around !important;
+  align-content: space-around !important;
+}
+
+.flex-end {
+  align-items: flex-end !important;
+  justify-items: flex-end !important;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-shrink {
+  flex-shrink: 1;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/* Position */
+.abs {
+    position: absolute;
+}
+
+.rel {
+    position: relative;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+$positions: (0,1,2,3,4,5,6,7,8,9,10,15,20,25,30,35,40,45,50);
+
+@each $pos in $positions {
+
+  .t-#{$pos}{
+    top: #{$pos}px;
+  }
+
+  .r-#{$pos}{
+    right: #{$pos}px; 
+  }
+
+  .l-#{$pos}{
+    left: #{$pos}px;
+  }
+
+  .b-#{$pos}{
+    bottom: #{$pos}px;
+  }
+
+  .t-n#{$pos}{
+    top: -#{$pos}px;
+  }
+
+  .r-n#{$pos}{
+    right: -#{$pos}px; 
+  }
+
+  .l-n#{$pos}{
+    left: -#{$pos}px;
+  }
+
+  .b-n#{$pos}{
+    bottom: -#{$pos}px;
+  }
+}
+
+/* Height and Width */
+
+.h-in {
+    height: inherit !important;
+}
+
+.h-ini {
+    height: initial !important;
+}
+
+.h-un {
+    height: unset !important;
+}
+
+.w-in {
+    width: inherit !important;
+}
+
+.w-ini {
+    width: initial !important;
+}
+
+.w-un {
+    width: unset !important;
+}
+
+$size: 5;
+@while $size <= 1000 {
+
+  .h-#{$size} {
+    height: #{$size}px !important;
+  }
+
+  .w-#{$size} {
+    width: #{$size}px !important;
+    flex-basis: #{$size}px !important;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  .max-h-#{$size} {
+    max-height: #{$size}px !important;
+  }
+
+  .max-w-#{$size} {
+    max-width: #{$size}px !important;
+    flex-basis: #{$size}px !important;
+    flex-grow: 0;
+  }
+
+  .min-h-#{$size} {
+    min-height: #{$size}px !important;
+  }
+
+  .min-w-#{$size} {
+    min-width: #{$size}px !important;
+    flex-basis: #{$size}px !important;
+    flex-shrink: 0;
+  }
+
+  $size: $size + 5;
+}
+
+$size: 1;
+@while $size <= 100 {
+
+  .h-#{$size}p {
+    height: #{$size}% !important;
+  }
+
+  .h-#{$size}vh {
+    height: #{$size}vh !important;
+  }
+
+  .h-#{$size}vw {
+    height: #{$size}vw !important;
+  }
+
+  .w-#{$size}p {
+    width: #{$size}% !important;
+    flex-basis: #{$size}% !important;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  .w-#{$size}vh {
+    width: #{$size}vh !important;
+  }
+
+  .w-#{$size}vw {
+    width: #{$size}vw !important;
+  }
+
+  .max-h-#{$size}p {
+    max-height: #{$size}% !important;
+  }
+
+  .max-h-#{$size}vh {
+    max-height: #{$size}vh !important;
+  }
+
+  .max-h-#{$size}vw {
+    max-height: #{$size}vw !important;
+  }
+
+  .max-w-#{$size}p {
+    max-width: #{$size}% !important;
+    flex-basis: #{$size}% !important;
+    flex-grow: 0;
+  }
+
+  .max-w-#{$size}vh {
+    max-width: #{$size}vh !important;
+  }
+
+  .max-w-#{$size}vw {
+    max-width: #{$size}vw !important;
+  }
+
+  .min-h-#{$size}p {
+    min-height: #{$size}% !important;
+  }
+
+  .min-h-#{$size}vh {
+    min-height: #{$size}vh !important;
+  }
+
+  .min-h-#{$size}vw {
+    min-height: #{$size}vw !important;
+  }
+
+  .min-w-#{$size}p {
+    min-width: #{$size}% !important;
+    flex-basis: #{$size}% !important;
+    flex-shrink: 0;
+  }
+
+  .min-w-#{$size}vh {
+    min-width: #{$size}vh !important;
+  }
+
+  .min-w-#{$size}vw {
+    min-width: #{$size}vw !important;
+  }
+
+  $size: $size + 1;
+}
+
+/* 
+  provide height/width in terms of vh/vw/p for decimals 0.1 - 9.9
+
+  e.g. h-1_5vh, max-w-8_5vw
+*/
+@each $one in (0,1,2,3,4,5,6,7,8,9) {
+  @each $tenth in (1,2,3,4,5,6,7,8,9) {
+
+    $size: (($one * 10) + $tenth)/10;
+
+    .h-#{$one}_#{$tenth}p {
+      height: #{$size}% !important;
+    }
+  
+    .h-#{$one}_#{$tenth}vh {
+      height: #{$size}vh !important;
+    }
+  
+    .h-#{$one}_#{$tenth}vw {
+      height: #{$size}vw !important;
+    }
+
+    .w-#{$one}_#{$tenth}p {
+      width: #{$size}% !important;
+    }
+  
+    .w-#{$one}_#{$tenth}vh {
+      width: #{$size}vh !important;
+    }
+  
+    .w-#{$one}_#{$tenth}vw {
+      width: #{$size}vw !important;
+    }
+
+    .max-h-#{$one}_#{$tenth}p {
+      max-height: #{$size}% !important;
+    }
+  
+    .max-h-#{$one}_#{$tenth}vh {
+      max-height: #{$size}vh !important;
+    }
+  
+    .max-h-#{$one}_#{$tenth}vw {
+      max-height: #{$size}vw !important;
+    }
+
+    .max-w-#{$one}_#{$tenth}p {
+      max-width: #{$size}% !important;
+    }
+  
+    .max-w-#{$one}_#{$tenth}vh {
+      max-width: #{$size}vh !important;
+    }
+  
+    .max-w-#{$one}_#{$tenth}vw {
+      max-width: #{$size}vw !important;
+    }
+  }
+}

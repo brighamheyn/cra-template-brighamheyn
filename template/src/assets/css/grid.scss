@@ -1,0 +1,53 @@
+/* Grid */
+
+@mixin grid-generator($size, $cols) {
+	@for $i from 1 through $cols {
+		.col-#{$size}-#{$i}-#{$cols} {
+			width: percentage($i / $cols);
+			float: left;
+		}
+	}
+}
+
+$breakpoints: (
+    ('xs', 480px),
+    ('sm', 624px),
+    ('md', 768px),
+    ('lg', 896px),
+    ('xl', 1024px),
+);
+
+@mixin respond-from($media) {
+  @each $breakpoint in $breakpoints {
+       @if $media == nth($breakpoint, 1) {
+            @media (min-width: #{nth($breakpoint, 2)})  { @content; }
+       }
+  }
+}
+
+@mixin respond-until($media) {
+  @each $breakpoint in $breakpoints {
+       @if $media == nth($breakpoint, 1) {
+            @media (max-width: #{nth($breakpoint, 2)})  { @content; }
+       }
+  }
+}
+
+@include grid-generator(xs, 12);
+
+
+@include respond-from(sm) {
+	@include grid-generator(sm, 12);
+}
+
+@include respond-from(md) {
+	@include grid-generator(md, 12);
+}
+
+@include respond-from(lg) {
+	@include grid-generator(lg, 12);
+}
+
+@include respond-from(xl) {
+	@include grid-generator(xl, 12);
+}

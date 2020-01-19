@@ -1,0 +1,52 @@
+$colors: (
+  "white":          #fff,
+  "athens-gray":    #f0f2f4,
+  "concrete":       #f2f2f2,
+  "gallery":        #eeeeee,
+  "mercury":        #e6e6e6,
+  "alto":           #dddddd,
+  "silver":         #cccccc,
+  "nobel":          #bbbbbb,
+  "silver-chalice": #aaaaaa,
+  "gray":           #888888,
+  "emperor":        #555555,
+  "tundora":        #444444,
+  "mine-shaft":     #333333,
+  "cod-gray":       #222222,
+  "big-stone":      #122335,
+  "midnight":       #001833,
+  "deep-sapphire":  #0d3c73,
+  "denim":          #126cd3,
+  "picton-blue":    #4393ef,
+  "anakiwa":        #99c9ff,
+  "tropical-blue":  #d1e4fa,
+  "periwinkle-gray": #c8d8ea,
+  "black-squeeze":  #e5edf5,
+  "zumthor":        #ebf4ff,
+  "cosmos":         #ffdbdb,
+  "your-pink":      #ffbcbc,
+  "bright-red":     #a80000,
+  "mountain-meadow":  #1da561,
+  "magic-mint":     #a0eec7,
+  "granny-apple":   #d4f7e6,
+  "gold":           #fad201,
+  "buttermilk":     #fff2af,
+  "island-spice":   #fffcec,
+  "spring-wood":    #f9f9f4,
+  "alabaster":      #f9f9f9
+);
+
+
+@each $color_name, $color_value in $colors {
+  .bg-#{$color_name} {
+    background-color: $color_value;
+  }
+
+  .text-#{$color_name} {
+    color: $color_value;
+  }
+
+  .bdr-#{$color_name} {
+    border-color: $color_value !important;
+  }
+}

@@ -1,0 +1,127 @@
+
+.text-center {
+    text-align: center;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.bolder {
+    font-weight: 800;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.fs-in {
+    font-size: inherit !important;
+}
+
+.fs-ini {
+    font-size: initial !important;
+}
+
+.fs-un {
+    font-size: unset !important;
+}
+
+$size: 8;
+@while $size <= 50 {
+
+    .fs-#{$size} {
+        font-size: #{$size}px !important;
+    }
+
+    $size: $size + 1;
+}
+
+$size: 1;
+@while $size <= 50 {
+    @if $size <= 5 {
+
+        .fs-#{$size}em {
+            font-size: #{$size}em !important;
+        }
+
+        .fs-#{$size}rem {
+            font-size: #{$size}rem !important;
+        }
+
+    }
+
+    .fs-#{$size}vh {
+        font-size: #{$size}vh !important;
+    }
+
+    .fs-#{$size}vw {
+        font-size: #{$size}vh !important;
+    }
+
+    $size: $size + 1;
+}
+
+@each $one in (0,1,2,3,4,5) {
+    @each $tenth in (1,2,3,4,5,6,7,8,9) {
+
+        $size: (($one * 10) + $tenth)/10;
+
+        .fs-#{$one}_#{$tenth}vh {
+            font-size: #{$size}vh !important;
+        }
+
+        .fs-#{$one}_#{$tenth}vw {
+            font-size: #{$size}vh !important;
+        }
+
+        .fs-#{$one}_#{$tenth}em {
+            font-size: #{$size}em !important;
+        }
+
+        .fs-#{$one}_#{$tenth}rem {
+            font-size: #{$size}rem !important;
+        }
+    } 
+}
+
+/* Line Height */
+
+.lh-in {
+    line-height: inherit !important;
+}
+
+.lh-ini {
+    line-height: initial !important;
+}
+
+.lh-un {
+    line-height: unset !important;
+}
+
+$lh: 8;
+@while $lh <= 20 {
+
+    .lh-#{$lh} {
+        line-height: #{$lh/10} !important;
+    }
+
+    $lh: $lh + 1;
+}
+
+@each $one in (1,2,3,4,5,6,7,8,9) {
+    @each $tenth in (1,2,3,4,5,6,7,8,9) {
+
+        $size: (($one * 10) + $tenth)/10;
+
+        .lh-#{$one}_#{$tenth}vh {
+            line-height: #{$size}vh !important;
+        }
+
+        .lh-#{$one}_#{$tenth}vw {
+            line-height: #{$size}vh !important;
+        }
+    } 
+}
+  
+  

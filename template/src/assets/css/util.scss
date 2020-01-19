@@ -1,0 +1,302 @@
+
+.hidden {
+    visibility: hidden !important;
+}
+
+.none {
+    display: none !important;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotating 2s linear infinite;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+a[disabled] {
+    pointer-events: none;
+}
+
+/* Border */
+
+.bdr-0 {
+    border: none !important;
+}
+
+.bdr-t-0 {
+    border-top: none !important;
+}
+
+.bdr-t-1 {
+    border-top: 1px solid;
+}
+
+.bdr-b-0 {
+    border-bottom: none !important;
+}
+
+.bdr-b-1 {
+    border-bottom: 1px solid;
+}
+
+.bdr-l-0 {
+    border-left: none !important;
+}
+
+.bdr-l-1 {
+    border-left: 1px solid;
+}
+
+.bdr-r-0 {
+    border-right: none !important;
+}
+
+.bdr-r-1 {
+    border-right: 1px solid;
+}
+
+.bdr-1 {
+    border: 1px solid;
+}
+
+/* Margin and Padding */
+
+$spaces: (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100);
+$sides: (top, bottom, left, right);
+
+@each $space in $spaces {
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+  
+    .p-#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+
+  .m-#{$space} {
+    margin: #{$space}px;
+  }
+
+  .p-#{$space} {
+    padding: #{$space}px;
+  }
+
+  .m-x-#{$space} {
+    margin-left: #{$space}px;
+    margin-right: #{$space}px;
+  }
+
+  .m-y-#{$space} {
+    margin-top: #{$space}px;
+    margin-bottom: #{$space}px;
+  }
+
+  .p-x-#{$space} {
+    padding-left: #{$space}px;
+    padding-right: #{$space}px;
+  }
+
+  .p-y-#{$space} {
+    padding-top: #{$space}px;
+    padding-bottom: #{$space}px;
+  }
+
+  @each $space2 in $spaces {
+    .m-#{$space}-#{$space2} {
+      margin: #{$space}px #{$space2}px;
+    }
+
+    .m-#{$space2}-#{$space} {
+      margin: #{$space2}px #{$space}px;
+    }
+
+    .p-#{$space}-#{$space2} {
+      padding: #{$space}px #{$space2}px;
+    }
+
+    .p-#{$space2}-#{$space} {
+      padding: #{$space2}px #{$space}px;
+    }
+  }
+}
+
+/* 
+  provide margin/padding in terms of vh/vw for whole numbers 1-10
+
+  e.g. p-10vh, m-x-9vw
+*/
+@each $space in (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20) {
+  @each $side in $sides {
+
+    .m-#{str-slice($side, 0, 1)}-#{$space}vh {
+      margin-#{$side}: #{$space}vh !important;
+    }
+  
+    .p-#{str-slice($side, 0, 1)}-#{$space}vh {
+      padding-#{$side}: #{$space}vh !important;
+    }
+
+    .m-#{str-slice($side, 0, 1)}-#{$space}vw {
+      margin-#{$side}: #{$space}vw !important;
+    }
+  
+    .p-#{str-slice($side, 0, 1)}-#{$space}vw {
+      padding-#{$side}: #{$space}vw !important;
+    }
+  }
+
+  .m-#{$space}vh {
+    margin: #{$space}vh;
+  }
+
+  .p-#{$space}vh {
+    padding: #{$space}vh;
+  }
+
+  .m-x-#{$space}vh {
+    margin-left: #{$space}vh;
+    margin-right: #{$space}vh;
+  }
+
+  .m-y-#{$space}vh {
+    margin-top: #{$space}vh;
+    margin-bottom: #{$space}vh;
+  }
+
+  .p-x-#{$space}vh {
+    padding-left: #{$space}vh;
+    padding-right: #{$space}vh;
+  }
+
+  .p-y-#{$space}vh {
+    padding-top: #{$space}vh;
+    padding-bottom: #{$space}vh;
+  }
+
+  .m-#{$space}vw {
+    margin: #{$space}vw;
+  }
+
+  .p-#{$space}vw {
+    padding: #{$space}vw;
+  }
+
+  .m-x-#{$space}vw {
+    margin-left: #{$space}vw;
+    margin-right: #{$space}vw;
+  }
+
+  .m-y-#{$space}vw {
+    margin-top: #{$space}vw;
+    margin-bottom: #{$space}vw;
+  }
+
+  .p-x-#{$space}vw {
+    padding-left: #{$space}vw;
+    padding-right: #{$space}vw;
+  }
+
+  .p-y-#{$space}vw {
+    padding-top: #{$space}vw;
+    padding-bottom: #{$space}vw;
+  }
+}
+
+/* 
+  provide margin/padding in terms of vh/vw for decimals 0.1 - 9.9
+
+  e.g. p-2_5vh, m-x-0_3vw
+*/
+@each $one in (0,1,2,3,4,5,6,7,8,9) {
+  @each $tenth in (1,2,3,4,5,6,7,8,9) {
+
+    $space: (($one * 10) + $tenth)/10;
+
+    @each $side in $sides {
+      .m-#{str-slice($side, 0, 1)}-#{$one}_#{$tenth}vh {
+        margin-#{$side}: #{$space}vh !important;
+      }
+    
+      .p-#{str-slice($side, 0, 1)}-#{$one}_#{$tenth}vh {
+        padding-#{$side}: #{$space}vh !important;
+      }
+
+      .m-#{str-slice($side, 0, 1)}-#{$one}_#{$tenth}vw {
+        margin-#{$side}: #{$space}vw !important;
+      }
+    
+      .p-#{str-slice($side, 0, 1)}-#{$one}_#{$tenth}vw {
+        padding-#{$side}: #{$space}vw !important;
+      }
+    }
+
+    .m-#{$one}_#{$tenth}vh {
+      margin: #{$space}vh;
+    }
+  
+    .p-#{$one}_#{$tenth}vh {
+      padding: #{$space}vh;
+    }
+  
+    .m-x-#{$one}_#{$tenth}vh {
+      margin-left: #{$space}vh;
+      margin-right: #{$space}vh;
+    }
+  
+    .m-y-#{$one}_#{$tenth}vh {
+      margin-top: #{$space}vh;
+      margin-bottom: #{$space}vh;
+    }
+  
+    .p-x-#{$one}_#{$tenth}vh {
+      padding-left: #{$space}vh;
+      padding-right: #{$space}vh;
+    }
+  
+    .p-y-#{$one}_#{$tenth}vh {
+      padding-top: #{$space}vh;
+      padding-bottom: #{$space}vh;
+    }
+
+    .m-#{$one}_#{$tenth}vw {
+      margin: #{$space}vw;
+    }
+  
+    .p-#{$one}_#{$tenth}vw {
+      padding: #{$space}vw;
+    }
+  
+    .m-x-#{$one}_#{$tenth}vw {
+      margin-left: #{$space}vw;
+      margin-right: #{$space}vw;
+    }
+  
+    .m-y-#{$one}_#{$tenth}vw {
+      margin-top: #{$space}vw;
+      margin-bottom: #{$space}vw;
+    }
+  
+    .p-x-#{$one}_#{$tenth}vw {
+      padding-left: #{$space}vw;
+      padding-right: #{$space}vw;
+    }
+  
+    .p-y-#{$one}_#{$tenth}vw {
+      padding-top: #{$space}vw;
+      padding-bottom: #{$space}vw;
+    }
+  } 
+}
