@@ -1,21 +1,25 @@
-import { bindActionCreators } from 'redux';
+import { ActionCreator, AnyAction, bindActionCreators } from 'redux';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { batchActions } from 'redux-batched-actions';
 
-import { store } from 'store';
+import {store, AppState } from 'store';
+import * as counter from './counter';
 
-//import * as services from '...';
-const services = {};
+export type Command<A extends AnyAction, R, E = null> = ActionCreator<ThunkAction<R, AppState, E, A>>
 
-function createApi( services: any, dispatch: any ) {
+export type Handler<A extends AnyAction, E = null> = ThunkDispatch<AppState, E, A>
 
-    let boundServices = bindServices(services, dispatch);
-
-    return boundServices;
+export const batch = (actions: AnyAction[], type?: string) => {
+    return batchActions(actions, type);
 }
 
-function bindServices( services: any, dispatch: any )
-{
-    let boundServices: any = {};
+const services = {
+    counter,
+};
 
+const createApi = (services: any, dispatch: any) => {
+
+    let boundServices: any = {};
     for (let name in services) {
         boundServices[name] = bindActionCreators(services[name], dispatch);
     }

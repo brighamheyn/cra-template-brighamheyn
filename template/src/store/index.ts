@@ -1,33 +1,25 @@
-import { createStore, applyMiddleware, Reducer, AnyAction } from 'redux';
+import { createStore, applyMiddleware, Reducer, AnyAction, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { enableBatching } from 'redux-batched-actions';
+import produce, { Draft } from 'immer';
+
+import * as Counter from './counter'
 
 const reduxDevTools = (window as any).__REDUX_DEVTOOLS_EXTENSION__;
 
+const rootReducer = combineReducers({counter: Counter.reducer});
+
+const batchEnabledReducer = enableBatching(rootReducer);
+
 const middlewares = [thunk];
 
-export interface State
+export interface AppState
 {
-    // TODO: Add state
+    counter: Counter.CounterState
 }
 
-export const initialState: State = {
-
+const initialState: AppState = {
+    counter: Counter.initialState
 }
 
-export const reducer: Reducer<State, AnyAction> = (state: State = initialState, action: AnyAction) => {
-
-    switch (action.type) {
-        default: {
-            return state;
-        }
-    }
-}
-
-const batchEnabledReducer = enableBatching(reducer);
-
-export const store = createStore(
-    batchEnabledReducer, 
-    initialState, 
-    applyMiddleware(...middlewares)
-)
+export const store = createStore(batchEnabledReducer, initialState, applyMiddleware(...middlewares));
